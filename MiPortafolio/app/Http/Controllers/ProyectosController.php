@@ -69,6 +69,8 @@ class ProyectosController extends Controller
     public function destroy(Proyectos $proyectos)
     {
         $proyectos->delete();
-        return response()->json(null,204);
+        //Log::info("Proyecto con ID: {$proyectos} eliminado correctamente");
+        return response()->json(null,200);
+        
     }
 }

@@ -24,6 +24,8 @@ export class ProyectosService {
   }
 
   deleteProyectos(id: number): Observable<any>{
+    console.log(id);
+    console.log(`${this.apiUrl}/${id}`)
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

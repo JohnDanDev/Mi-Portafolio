@@ -19,4 +19,8 @@ use App\Http\Controllers\ProyectosController;
     return $request->user();
 });*/
 
-Route::apiResource('proyectos',ProyectosController::class);
+
+//Route::apiResource('proyectos',ProyectosController::class);
+Route::delete('proyectos/{proyectos}',[ProyectosController::class,'destroy']);
+Route::post('proyectos',[ProyectosController::class,'store']);
+Route::get('proyectos',[ProyectosController::class,'index']);
