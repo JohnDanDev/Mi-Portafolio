@@ -1,8 +1,8 @@
-import { Routes } from '@angular/router';
-import { ProyectosComponent } from './proyectos.component';
+import { RouterModule, Routes } from '@angular/router';
+
+import { NgModel } from '@angular/forms';
 
 export const routes: Routes = [
-   /* {path:'', redirectTo: 'proyectos', pathMatch: 'full'},
+   /*{path:'', redirectTo: 'proyectos', pathMatch: 'full'},
     {path:'proyectos', component: ProyectosComponent}*/
-    { path: 'proyecto', component: ProyectosComponent },
 ];

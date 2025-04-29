@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface Proyecto{
+  id?: number;
+  nombre: string;
+  descripcion: string;
+  link: string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,21 +19,26 @@ export class ProyectosService {
 
   constructor(private http: HttpClient) { }
 
-  getProyectos(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  getAll(): Observable<any> {
+    return this.http.get<Proyecto[]>(this.apiUrl);
   }
 
-  createProyectos(proyectos: any): Observable<any>{
-    return this.http.post(this.apiUrl, proyectos);
+  get(id: number): Observable<any>{
+    return this.http.get<Proyecto>(`${this.apiUrl}/${id}`);
   }
 
-  updateProyectos(id:number, proyectos:any): Observable<any>{
-    return this.http.put(`${this.apiUrl}/${id}`, proyectos);
+  create(proyecto: Proyecto): Observable<Proyecto>{
+    return this.http.post<Proyecto>(this.apiUrl, proyecto);
   }
 
-  deleteProyectos(id: number): Observable<any>{
+  update(id:number, proyecto:Proyecto): Observable<any>{
+    console.log('Encontre el id' + id);
+    return this.http.put<Proyecto>(`${this.apiUrl}/${id}`, proyecto);
+  }
+
+  delete(id: number): Observable<void>{
     console.log(id);
     console.log(`${this.apiUrl}/${id}`)
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
