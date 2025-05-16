@@ -31,7 +31,10 @@ export class ProyectoComponent implements OnInit{
   }
 
   eliminarProyecto(id: number){
-    this.proyectoService.delete(id).subscribe(() => this.obtenerProyecto());
+    this.proyectoService.delete(id).subscribe(() => {
+      console.log('Proyecto Eliminado');
+      this.obtenerProyecto();
+    });
   }
 
   cancelarEdicion(){

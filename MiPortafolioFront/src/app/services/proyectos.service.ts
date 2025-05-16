@@ -36,7 +36,7 @@ export class ProyectosService {
     return this.http.put<Proyecto>(`${this.apiUrl}/${id}`, proyecto);
   }
 
-  delete(id: number): Observable<void>{
+  delete(id: number): Observable<any>{
     console.log(id);
     console.log(`${this.apiUrl}/${id}`)
     return this.http.delete<void>(`${this.apiUrl}/${id}`);

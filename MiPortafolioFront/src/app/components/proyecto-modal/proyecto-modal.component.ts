@@ -26,7 +26,7 @@ export class ProyectoModalComponent implements OnInit {
 
   guardarProyecto(){
     if(this.proyectoSeleccionado.id){
-      console.log("Encontre el id " + this.proyectoSeleccionado.id);
+      console.log(this.proyectoSeleccionado);
       this.proyectoService
       .update(this.proyectoSeleccionado.id, this.proyectoSeleccionado)
       .subscribe(() => {

@@ -22,23 +22,33 @@ class ProyectosController extends Controller
     
     public function show($id)
     {
-        return Proyectos::findOrFail($id);
+        $proyectos = Proyectos::find($id);
+
+        return response()->json($proyectos);
     }
 
   
     public function update(Request $request, $id)
     {
+        $proyectos = Proyectos::find($id);
+        $validated = $request->validate([
+        'nombre' => 'required|string|max:255',
+        'descripcion' => 'nullable|string',
+        'link' => 'nullable|string'
+        ]);
 
-        $proyectos = Proyecto::findOrFail($id);
-        $proyectos->update($request->all());
-        return $proyectos;
+        $proyectos->update($validated);
+
+        return response()->json(['message' => 'Proyecto actualizado', 'proyectos' => $proyectos]);
     }
 
    
     public function destroy($id)
     {
-        Proyectos::destroy($id);
-        return response()->json(null, 204);
-        
+        $proyectos = Proyectos::find($id);
+
+        $proyectos->delete();
+
+        return response()->json(['message' => 'Proyecto eliminado correctamente']);
     }
 }
