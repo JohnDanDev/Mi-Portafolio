@@ -21,7 +21,7 @@ use App\Http\Controllers\ProyectosController;
 
 
 //Route::apiResource('proyectos',ProyectosController::class);
-Route::delete('/proyecto/{id}',[ProyectosController::class,'destroy']);
+Route::delete('/proyectos/{id}',[ProyectosController::class,'destroy']);
 Route::post('/proyectos',[ProyectosController::class,'store']);
 Route::get('/proyectos',[ProyectosController::class,'index']);
 Route::get('/proyectos/{id}',[ProyectosController::class,'show']);
