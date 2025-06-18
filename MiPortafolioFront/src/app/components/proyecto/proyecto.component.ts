@@ -7,6 +7,7 @@ import { ProyectoModalComponent } from "../proyecto-modal/proyecto-modal.compone
   selector: 'app-proyecto',
   imports: [CommonModule, ProyectoModalComponent],
   templateUrl: './proyecto.component.html',
+  styleUrl: './proyecto.component.css'
 })
 export class ProyectoComponent implements OnInit{
 
