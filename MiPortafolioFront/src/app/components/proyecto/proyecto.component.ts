@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProyectosService, Proyecto } from '../../services/proyectos.service';
 import { CommonModule } from '@angular/common';
 import { ProyectoModalComponent } from "../proyecto-modal/proyecto-modal.component";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-proyecto',

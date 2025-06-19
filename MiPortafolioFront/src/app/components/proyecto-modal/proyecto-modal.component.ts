@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Modal } from 'bootstrap';
 import { Output, EventEmitter } from '@angular/core';
 import { ProyectoComponent } from '../proyecto/proyecto.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 

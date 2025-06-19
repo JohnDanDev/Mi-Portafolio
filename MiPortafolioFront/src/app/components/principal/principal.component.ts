@@ -6,5 +6,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.css'
 })
-export class PrincipalComponent{ 
+export class PrincipalComponent{
 }

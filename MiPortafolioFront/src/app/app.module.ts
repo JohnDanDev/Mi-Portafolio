@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+/*import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
@@ -10,7 +10,7 @@ import { AppComponent } from "./app.component";
 
 
 @NgModule({
-    declarations: [AppComponent,PrincipalComponent, ProyectoComponent, ProyectoModalComponent],
+    declarations: [],
     imports: [BrowserModule, HttpClientModule, FormsModule]
 })
-export class AppModule{}
+export class AppModule{}*/
