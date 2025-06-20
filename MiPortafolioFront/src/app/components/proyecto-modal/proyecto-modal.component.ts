@@ -42,7 +42,7 @@ export class ProyectoModalComponent implements OnInit {
   }
 
   cerrarModal(){
-    const modalElement = document.getElementById('#proyectoModal')!;
+    const modalElement = document.getElementById('proyectoModal')!;
     const modal = new Modal(modalElement);
     modal.hide();
   }

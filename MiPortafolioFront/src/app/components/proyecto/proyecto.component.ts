@@ -21,10 +21,14 @@ export class ProyectoComponent implements OnInit{
     this.obtenerProyecto();
   }
 
+  abrirModalCrear(){
+    this.proyectoSeleccionado = {nombre:'', descripcion:'', link:''};
+  }
+
   obtenerProyecto(){
     this.proyectoService.getAll().subscribe((proyectos) => { 
       this.proyectos = proyectos;
-      
+      this.proyectoSeleccionado = {nombre:'', descripcion:'', link:''};
     });
   }
 
