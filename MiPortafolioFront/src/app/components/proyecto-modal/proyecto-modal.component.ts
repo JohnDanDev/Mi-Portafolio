@@ -41,10 +41,12 @@ export class ProyectoModalComponent implements OnInit {
     }
   }
 
-  cerrarModal(){
+  /*cerrarModal(){
     const modalElement = document.getElementById('proyectoModal')!;
-    const modal = new Modal(modalElement);
+    if(modalElement){
+    const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
     modal.hide();
-  }
+    }
+  }*/
 
 }
