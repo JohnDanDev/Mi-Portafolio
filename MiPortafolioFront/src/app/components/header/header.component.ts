@@ -12,6 +12,7 @@ export class HeaderComponent {
   principal = 'Principal';
   proyectos = 'Proyectos';
   experiencias = 'Experiencias';
+  proyectoVista = 'ProyectoVista';
 
   menuAbierto = false;
 
