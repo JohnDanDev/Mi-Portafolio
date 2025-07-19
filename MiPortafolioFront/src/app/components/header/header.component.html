@@ -8,11 +8,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav" [class.show]="menuAbierto">
     <ul class="navbar-nav">
-      <li class="nav-item active"><a class="nav-link" routerLink="/principal">Aqui va una imagen<span class="sr-only">(current)</span></a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/principal" (click)="cerrarMenu()">{{ principal }}</a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/proyectos" (click)="cerrarMenu()">{{ proyectos}}</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="">{{ experiencias }}</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/proyectoVista">{{ proyectoVista }}</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/experienciaVista" (click)="cerrarMenu()">{{ experienciaVista }}</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/proyectoVista" (click)="cerrarMenu()">{{ proyectoVista }}</a></li>
     </ul>
     </div>
   </nav>
