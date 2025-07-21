@@ -1,1 +1,42 @@
-<p>Aqui va la pagina principal del portafolio</p>
+<!--Mi perfil-->
+<div class="perfil">
+    <div class="titulo">
+        <h1>{{nombre}}</h1>
+        <h2>{{titulo}}</h2>
+    </div>
+    <!--Mi Descripción-->
+    <div class="descripcion">
+        <p>{{perfil}}</p>
+        <h3>{{tituloFormacion}}</h3>
+        <p class="educacion" [innerHTML]="formacion">{{formacion}}</p>
+        <!--Mis Habilidades blandas y técnicas-->
+        <div class="habilidades">
+            <div class="blandas">
+                <h3>{{tituloBlandas}}</h3>
+                <ul>
+                    <li *ngFor="let hblandas of blandas">{{hblandas}}</li>
+                </ul>
+            </div>
+            <div class="tecnicas">
+                <h3>{{tituloTecnicas}}</h3>
+                <h4>{{tituloBackEnd}}</h4>
+                <ul>
+                    <li *ngFor="let backEnd of tecnicasBackEnd">{{backEnd}}</li>
+                </ul>
+                <h4>{{tituloFrontEnd}}</h4>
+                <ul>
+                    <li *ngFor="let frontEnd of tecnicasFronEnd">{{frontEnd}}</li>
+                </ul>
+                <h4>{{tituloBasesDatos}}</h4>
+                <ul>
+                    <li *ngFor="let basesDeDatos of basesDeDatos">{{basesDeDatos}}</li>
+                </ul>
+                <h4>{{tituloHerramientas}}</h4>
+                <ul>
+                    <li *ngFor="let herramientas of herramientas">{{herramientas}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
