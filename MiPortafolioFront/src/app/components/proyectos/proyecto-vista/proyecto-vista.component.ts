@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 export class ProyectoVistaComponent implements OnInit{
   
   proyectos: Proyecto[] = [];
+  proyectoSeleccionado: Proyecto = { nombre:'', descripcion:'', link:'' };
+
 
   constructor(private proyectoService: ProyectosService){}
   ngOnInit(): void {
@@ -18,7 +20,9 @@ export class ProyectoVistaComponent implements OnInit{
   }
 
   obtenerProyecto(){
-    this.proyectoService
+    this.proyectoService.getAll().subscribe((proyectos) =>{
+      this.proyectos = proyectos;
+      this.proyectoSeleccionado = {nombre:'', descripcion:'', link:''};
+    });
   }
-
 }

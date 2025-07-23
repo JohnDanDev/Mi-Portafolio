@@ -1,3 +1,13 @@
 <div>
-    
+    <h2>Listado de Proyectos</h2>
+    <table>
+        <tbody>
+            <tr *ngFor="let proyecto of proyectos">
+                <td>{{proyecto.nombre}}</td>
+                <td>{{proyecto.descripcion}}</td>
+                <td>{{proyecto.link}}</td>
+                <br>
+            </tr>
+        </tbody>
+    </table>
 </div>
