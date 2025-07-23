@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProyectosService, Proyecto } from '../../../services/proyectos.service';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +14,11 @@ export class ProyectoVistaComponent implements OnInit{
 
   constructor(private proyectoService: ProyectosService){}
   ngOnInit(): void {
-    
+    this.obtenerProyecto();
+  }
+
+  obtenerProyecto(){
+    this.proyectoService
   }
 
 }

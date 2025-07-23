@@ -14,7 +14,7 @@ export class PrincipalComponent{
   titulo: string = 'Pasante en Ingeniería en Computación | Desarrollador de Software';
 
   perfil: string = `Ingeniería en Computación con más de 3 años de experiencia en desarrollo de software. 
-  Especializado en tecnologías web como Angular, Laravel y Spring Boot. Fuerte enfoque en el diseño de soluciones
+  Especializado en tecnologías web como Angular, Laravel y Java. Fuerte enfoque en el diseño de soluciones
   escalables, el desarrollo de APIs RESTful y la implementación de buenas prácticas de programación.
   Destacado por la capacidad de trabajo en equipo, resolución de problemas y compromiso con la mejora continua.
   Interesado en participar en proyectos innovadores que aporten valor a la sociedad mediante la tecnología.`;
