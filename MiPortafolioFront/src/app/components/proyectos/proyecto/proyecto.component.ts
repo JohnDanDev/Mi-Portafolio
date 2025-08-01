@@ -6,7 +6,7 @@ import { ProyectoModalComponent } from '../proyecto-modal/proyecto-modal.compone
 
 @Component({
   selector: 'app-proyecto',
-  imports: [CommonModule, ProyectoModalComponent],
+  imports: [CommonModule],
   templateUrl: './proyecto.component.html',
   styleUrl: './proyecto.component.css'
 })
@@ -45,6 +45,17 @@ export class ProyectoComponent implements OnInit{
 
   cancelarEdicion(){
     this.proyectoSeleccionado = {nombre: '', descripcion: '', link: ''};
+  }
+
+  //Abrir y Cerrar modal o ventana emergente
+  isModalOpen = false;
+
+  openModal(){
+    this.isModalOpen = true;
+  }
+
+  closeModal(){
+    this.isModalOpen = false;
   }
 
 }
