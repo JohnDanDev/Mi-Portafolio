@@ -4,8 +4,7 @@
     <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#proyectoModal" (click)="openModal()">
         Agregar Proyecto
     </button>
-
-    <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()"></div>
+  <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()"></div>
 </div>
 
 <table class="table table-bordered">
@@ -32,37 +31,9 @@
 </table>
 
 <ng-template #modalTemplate>
-    <div class="modal-content">
-        <h2>Esto es un modal</h2>
-        <div class="modal fade" id="proyectoModal" tabindex="-1" aria-labelledby="proyectoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="proyectoModalLabel">{{ proyectoSeleccionado.id ? 'Editar Proyecto' : 'Agregar Proyecto'}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripcion</label>
-                        <input type="text" id="descripcion" class="form-control" name="descripcion" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="link" class="form-label">Link</label>
-                        <input type="text" id="link" class="form-control"name="link" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">{{ proyectoSeleccionado.id ? 'Actualizar' : 'Guardar' }}</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                    <button (click)="closeModal()">Cerrar</button>
-                </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<p>Aqui va el menu</p>
+<div class="modal fade" id="proyectoModal" tabindex="-1" aria-labelledby="proyectoModalLabel" aria-hidden="true">
+    
 </div>
 
 </ng-template>
