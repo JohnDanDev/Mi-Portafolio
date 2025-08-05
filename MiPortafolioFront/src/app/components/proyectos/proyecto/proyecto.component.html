@@ -1,11 +1,10 @@
 <h2>Listado de Proyectos</h2>
 
 <div class="botonAgregar">
-    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#proyectoModal" (click)="openModal()">
-        Agregar Proyecto
-    </button>
-  <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()"></div>
+    <button class="btn btn-primary" (click)="openModal()">Agregar Proyecto</button>
+    <div *ngIf="isModalOpen" (click)="closeModal()"></div>
 </div>
+
 
 <table class="table table-bordered">
     <thead>
@@ -30,15 +29,41 @@
     </tbody>
 </table>
 
-<ng-template #modalTemplate>
+<ng-template #formTemplate>
 <p>Aqui va el menu</p>
-<div class="modal fade" id="proyectoModal" tabindex="-1" aria-labelledby="proyectoModalLabel" aria-hidden="true">
-    
+<div class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0,0,0,0.5);">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{{ proyectoSeleccionado.id ? 'Editar Proyecto' : 'Agregar Proyecto'}}</h2>
+                <button type="button" class="btn-close" (click)="closeModal()" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body">
+                <form (submit)="guardarProyecto()">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" class="form-control" name="nombre" required [(ngModel)]="proyectoSeleccionado.nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripcion</label>
+                        <input type="text" id="descripcion" class="form-control" name="descripcion" required [(ngModel)]="proyectoSeleccionado.descripcion">
+                    </div>
+                    <div class="mb-3">
+                        <label for="link" class="form-label">Link</label>
+                        <input type="text" id="link" class="form-control" name="link" required [(ngModel)]="proyectoSeleccionado.link">
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">{{ proyectoSeleccionado.id ? 'Actualizar' : 'Guardar' }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </ng-template>
 
 <div *ngIf="isModalOpen">
-    <ng-container *ngTemplateOutlet="modalTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
 </div>
 
 <!--<app-proyecto-modal [proyectoSeleccionado]="proyectoSeleccionado" (proyectoGuardado)="obtenerProyecto()"></app-proyecto-modal>-->

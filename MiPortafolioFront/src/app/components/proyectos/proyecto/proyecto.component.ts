@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProyectosService, Proyecto } from '../../../services/proyectos.service';
 import { CommonModule } from '@angular/common';
-import { ProyectoModalComponent } from '../proyecto-modal/proyecto-modal.component';
 import { FormsModule } from '@angular/forms';
 
 
@@ -12,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './proyecto.component.css'
 })
 export class ProyectoComponent implements OnInit{
+  [x: string]: any;
 
   @Input() proyectoSeleccionado: Proyecto = {nombre: '', descripcion: '', link: ''};
   @Output() proyectoGuardado = new EventEmitter<void>();
