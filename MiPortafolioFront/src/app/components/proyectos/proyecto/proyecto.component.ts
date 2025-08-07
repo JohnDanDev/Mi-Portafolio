@@ -11,71 +11,58 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './proyecto.component.css'
 })
 export class ProyectoComponent implements OnInit{
-  [x: string]: any;
-
-  @Input() proyectoSeleccionado: Proyecto = {nombre: '', descripcion: '', link: ''};
-  @Output() proyectoGuardado = new EventEmitter<void>();
-
-  proyectos: Proyecto[] = [];
-  proyectoSeleccionados: Proyecto = { nombre:'', descripcion:'', link:'' };
-
+ 
   constructor(private proyectoService: ProyectosService){}
 
   ngOnInit(): void {
-    this.obtenerProyecto();
+    this.cargarProyecto();
   }
+
+  proyectos: Proyecto[] = []; //Lista de usuarios
+
+  proyecto: Proyecto = {nombre: '', descripcion: '', link: ''}; //Modelo
 
   guardarProyecto(){
-    if(this.proyectoSeleccionado.id){
-      console.log(this.proyectoSeleccionado);
-      this.proyectoService
-      .update(this.proyectoSeleccionado.id, this.proyectoSeleccionado)
+    if(this.proyecto.id){
+      this.proyectoService.update(this.proyecto.id, this.proyecto)
       .subscribe(() => {
-        this.proyectoGuardado.emit();
-      });
-    }else{
-      this.proyectoService.create(this.proyectoSeleccionado).subscribe(() => {
-        this.proyectoGuardado.emit();
-        this.proyectoSeleccionado = {nombre:'', descripcion: '', link:''}
-      });
-    }
-  }
-
-  abrirModalCrear(){
-    this.proyectoSeleccionados = {nombre:'', descripcion:'', link:''};
-  }
-
-  obtenerProyecto(){
-    this.proyectoService.getAll().subscribe((proyectos) => { 
-      this.proyectos = proyectos;
-      this.proyectoSeleccionados = {nombre:'', descripcion:'', link:''};
-    });
-  }
-
-  editarProyecto(proyecto: Proyecto){
-    this.proyectoSeleccionados = { ...proyecto};
+        this.cargarProyecto();
+        this.closeModal();
+      })
+      } else {
+        this.proyectoService.create(this.proyecto)
+        .subscribe(() => {
+          this.cargarProyecto();
+          this.closeModal();
+        })
+      }
   }
 
   eliminarProyecto(id: number){
-    this.proyectoService.delete(id).subscribe(() => {
-      console.log('Proyecto Eliminado');
-      this.obtenerProyecto();
-    });
+    if(confirm('¿Eliminar este proyecto?')){
+      this.proyectoService.delete(id)
+      .subscribe(() => this.cargarProyecto());
+    }
   }
 
-  cancelarEdicion(){
-    this.proyectoSeleccionados= {nombre: '', descripcion: '', link: ''};
+  cargarProyecto(){
+    this.proyectoService.getAll().subscribe(proyectos => this.proyectos = proyectos);
   }
 
-  //Abrir y Cerrar modal o ventana emergente
+    //Abrir y Cerrar modal o ventana emergente
   isModalOpen = false;
 
-  openModal(){
+  openModal(proyecto?: Proyecto){
+    if(proyecto){
+      this.proyecto = { ...proyecto};
+    } else {
+      this.proyecto = { nombre: '', descripcion: '', link: ''};
+    }
     this.isModalOpen = true;
   }
 
   closeModal(){
     this.isModalOpen = false;
   }
+  }
 
-}

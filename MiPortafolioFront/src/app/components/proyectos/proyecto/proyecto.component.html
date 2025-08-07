@@ -19,7 +19,7 @@
             <td> {{proyecto.nombre}} </td>
             <td> {{proyecto.descripcion}} </td>
             <td> {{proyecto.link}} </td>
-            <td><button class="btn btn-warning" (click)="editarProyecto(proyecto)" data-bs-toggle="modal" data-bs-target="#proyectoModal">
+            <td><button class="btn btn-warning" (click)="openModal(proyecto)">
                 Editar
             </button></td>
             <td><button class="btn btn-danger" (click)="eliminarProyecto(proyecto.id!)">
@@ -31,11 +31,11 @@
 
 <ng-template #formTemplate>
 <p>Aqui va el menu</p>
-<div class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0,0,0,0.5);">
+<div class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5);">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>{{ proyectoSeleccionado.id ? 'Editar Proyecto' : 'Agregar Proyecto'}}</h2>
+                <h2>{{ proyecto.id ? 'Editar Proyecto' : 'Agregar Proyecto'}}</h2>
                 <button type="button" class="btn-close" (click)="closeModal()" aria-label="Cerrar"></button>
             </div>
 
@@ -43,18 +43,18 @@
                 <form (submit)="guardarProyecto()">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" required [(ngModel)]="proyectoSeleccionado.nombre">
+                        <input type="text" id="nombre" class="form-control" name="nombre" required [(ngModel)]="proyecto.nombre">
                     </div>
                     <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripcion</label>
-                        <input type="text" id="descripcion" class="form-control" name="descripcion" required [(ngModel)]="proyectoSeleccionado.descripcion">
+                        <input type="text" id="descripcion" class="form-control" name="descripcion" required [(ngModel)]="proyecto.descripcion">
                     </div>
                     <div class="mb-3">
                         <label for="link" class="form-label">Link</label>
-                        <input type="text" id="link" class="form-control" name="link" required [(ngModel)]="proyectoSeleccionado.link">
+                        <input type="text" id="link" class="form-control" name="link" required [(ngModel)]="proyecto.link">
                     </div>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">{{ proyectoSeleccionado.id ? 'Actualizar' : 'Guardar' }}</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">{{ proyecto.id ? 'Actualizar' : 'Guardar' }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">Cancelar</button>
                 </form>
             </div>
         </div>
@@ -65,5 +65,3 @@
 <div *ngIf="isModalOpen">
     <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
 </div>
-
-<!--<app-proyecto-modal [proyectoSeleccionado]="proyectoSeleccionado" (proyectoGuardado)="obtenerProyecto()"></app-proyecto-modal>-->
