@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('experiencias', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->string('lugar');
+            $table->text('detalle');
+            $table->date('periodoInicio');
+            $table->date('periodoFinal');
             $table->timestamps();
         });
     }
