@@ -21,6 +21,19 @@ class ExperienciasController extends Controller
     }
 
     public function update(Request $request, $id){
-        
+        $experiencias = Experiencias::find($id);
+        $validated = $request->validate([
+            'titulo' => 'required|string|max:255',
+            'lugar' => 'required|string|max:255',
+            'detalle' => 'required|string|max:255'
+        ]);
+
+        return response()->json(['message' => 'Experiencia actualizada', 'experiencias' =>$experiencias]);
+    }
+
+    public function destroy($id){
+        $experiencias = Experiencias::find($id);
+        $experiencias -> delete();
+        return response()->json(['message' => 'Experiencia Eliminada']);
     }
 }

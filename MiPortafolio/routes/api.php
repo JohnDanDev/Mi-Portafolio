@@ -26,3 +26,9 @@ Route::post('/proyectos',[ProyectosController::class,'store']);
 Route::get('/proyectos',[ProyectosController::class,'index']);
 Route::get('/proyectos/{id}',[ProyectosController::class,'show']);
 Route::put('/proyectos/{id}', [ProyectosController::class, 'update']);
+
+Route::delete('/experiencias/{id}', [ExperienciasController::class, 'destroy']);
+Route::post('/experiencias', [ExperienciasController::class, 'store']);
+Route::get('/experiencias', [ExperienciasController::class, 'index']);
+Route::get('/experiencias/{id}', [ExperienciasController::class, 'show']);
+Route::put('/experiencias/{id}', [ExperienciasController::class, 'update']);
