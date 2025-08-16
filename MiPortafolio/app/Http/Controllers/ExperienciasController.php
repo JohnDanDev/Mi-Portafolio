@@ -28,6 +28,8 @@ class ExperienciasController extends Controller
             'detalle' => 'required|string|max:255'
         ]);
 
+        $experiencias->update($validated);
+
         return response()->json(['message' => 'Experiencia actualizada', 'experiencias' =>$experiencias]);
     }
 

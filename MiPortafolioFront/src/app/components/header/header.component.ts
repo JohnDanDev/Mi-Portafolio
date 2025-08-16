@@ -11,7 +11,8 @@ export class HeaderComponent {
   title = 'MiPortafolioFront';
   principal = 'Principal';
   proyectos = 'Proyectos';
-  experienciaVista = 'Experiencias';
+  experiencias = 'Experiencia';
+  experienciaVista = 'ExperienciasVista';
   proyectoVista = 'ProyectoVista';
 
   menuAbierto = false;
