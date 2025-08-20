@@ -3,8 +3,11 @@
     <table>
         <tbody>
             <tr *ngFor="let experiencia of experiencias">
-                <td>{{experiencia}}</td>
-                
+                <td>{{ experiencia.titulo }}</td>
+                <td> {{ experiencia.lugar }} </td>
+                <td>{{ experiencia.detalle }}</td>
+                <td>{{ experiencia.periodoInicio }}</td>
+                <td>{{ experiencia.periodoFinal }}</td>
                 <br>
             </tr>
         </tbody>

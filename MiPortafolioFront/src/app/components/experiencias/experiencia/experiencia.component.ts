@@ -25,6 +25,7 @@ guardarExperiencia(){
   if(this.experiencia.id){
     this.experienciaService.update(this.experiencia.id, this.experiencia)
     .subscribe(() =>{
+      console.log('El id es: ', this.experiencia.id);
       this.cargarExperiencia();
       this.closeModal();
     })

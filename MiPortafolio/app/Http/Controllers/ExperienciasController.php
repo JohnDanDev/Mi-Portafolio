@@ -25,7 +25,9 @@ class ExperienciasController extends Controller
         $validated = $request->validate([
             'titulo' => 'required|string|max:255',
             'lugar' => 'required|string|max:255',
-            'detalle' => 'required|string|max:255'
+            'detalle' => 'required|string|max:255',
+            'periodoInicio' => 'nullable',
+            'periodoFinal' => 'nullable'
         ]);
 
         $experiencias->update($validated);

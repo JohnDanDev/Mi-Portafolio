@@ -57,11 +57,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="periodoInicial" class="form-label">Periodo Inicial</label>
-                        <input type="text" id="periodoInicial" class="form-control" name="periodoInicial" required [(ngModel)]="experiencia.periodoInicio">
+                        <input type="date" id="periodoInicial" class="form-control" name="periodoInicial" required [(ngModel)]="experiencia.periodoInicio">
                     </div>
                     <div class="mb-3">
                         <label for="periodoFinal" class="form-label">Periodo Final</label>
-                        <input type="text" id="periodoFinal" class="form-control" name="periodoFinal" required [(ngModel)]="experiencia.periodoFinal">
+                        <input type="date" id="periodoFinal" class="form-control" name="periodoFinal" required [(ngModel)]="experiencia.periodoFinal">
                     </div>
                     <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">{{ experiencia.id ? 'Actualizar' : 'Guardar' }}</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">Cancelar</button>

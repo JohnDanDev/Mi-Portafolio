@@ -33,7 +33,8 @@ export class ExperienciasService {
     return this.http.post<Experiencia>(this.apiUrl, experiencia);
   }
 
-  update(id: number, experiencia:Experiencia): Observable<any>{
+  update(id: number, experiencia: Experiencia): Observable<Experiencia>{
+    console.log('Encontre el id' + id);
     return this.http.put<Experiencia>(`${this.apiUrl}/${id}`, experiencia);
   }
 
