@@ -1,0 +1,85 @@
+<h2>Listado de Cursos</h2>
+
+<div class="botonAgregar">
+    <button class="btn btn-primary" (click)="openModal()">Agregar Curso</button>
+    <div *ngIf="isModalOpen" (click)="closeModal()"></div>
+</div>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID Cursos</th>
+            <th>Nombre</th>
+            <th>Lugar o Plataforma</th>
+            <th>Detalle</th>
+            <th>URL de Certificado</th>
+            <th>Fecha de Expedicion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let curso of cursos">
+            <td> {{curso.id_curso}} </td>
+            <td> {{curso.nombre}} </td>
+            <td> {{curso.lugar}} </td>
+            <td> {{curso.detalle}} </td>
+            <td> {{curso.url_img}} </td>
+            <td> {{curso.fecha_expedicion}} </td>
+            <td><button class="btn btn-warning" (click)="openModal(curso)">
+                Editar
+            </button></td>
+            <td><button class="btn btn-danger" (click)="eliminarCurso(curso.id!)">
+                Eliminar
+            </button></td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #formTemplate>
+<p>Aqui va el menu</p>
+<div class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{{ curso.id ? 'Editar Curso' : 'Agregar Curso'}}</h2>
+                <button type="button" class="btn-close" (click)="closeModal()" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body">
+                <form (submit)="guardarCurso()">
+                    <div class="mb-3">
+                        <label for="id_curso" class="form-label">ID Curso</label>
+                        <input type="text" id="id_curso" class="form-control" name="id_curso" required [(ngModel)]="curso.id_curso">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" class="form-control" name="nombre" required [(ngModel)]="curso.nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lugar" class="form-label">Lugar o Plataforma</label>
+                        <input type="text" id="lugar" class="form-control" name="lugar" required [(ngModel)]="curso.lugar">
+                    </div>
+                    <div class="mb-3">
+                        <label for="detalle" class="form-label">Detalle</label>
+                        <input type="text" id="detalle" class="form-control" name="detalle" required [(ngModel)]="curso.detalle">
+                    </div>
+                    <div class="mb-3">
+                        <label for="url_img" class="form-label">URL del certificado</label>
+                        <input type="text" id="url_img" class="form-control" name="url_img" required [(ngModel)]="curso.url_img">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fecha_expedicion" class="form-label">Fecha de Expedicion</label>
+                        <input type="date" id="fecha_expedicion" class="form-control" name="fecha_expedicion" required [(ngModel)]="curso.fecha_expedicion">
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">{{ curso.id ? 'Actualizar' : 'Guardar' }}</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</ng-template>
+
+<div *ngIf="isModalOpen">
+    <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+</div>

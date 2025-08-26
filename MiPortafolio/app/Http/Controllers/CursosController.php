@@ -24,12 +24,15 @@ class CursosController extends Controller
         $cursos = Cursos::find($id);
         $validated = $request->validate([
             'id_curso' => 'required|string|max:255',
-            'nombre' => 'required|string|'
+            'nombre' => 'required|string|',
+            'lugar' => 'required|string',
+            'detalle' => 'required|string',
+            'url_img' => 'required|string|nullable',
         ]);
 
         $experiencias->update($validated);
 
-        return response()->json(['message' => 'Experiencia actualizada', 'experiencias' =>$cursos]);
+        return response()->json(['message' => 'Curso actualizado', 'cursos' =>$cursos]);
     }
 
     public function destroy($id){

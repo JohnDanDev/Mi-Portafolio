@@ -14,7 +14,7 @@ export class HeaderComponent {
   experiencias = 'Experiencia';
   experienciaVista = 'ExperienciasVista';
   proyectoVista = 'ProyectoVista';
-
+  cursos = 'Cursos';
   menuAbierto = false;
 
   toggleMenu(){
