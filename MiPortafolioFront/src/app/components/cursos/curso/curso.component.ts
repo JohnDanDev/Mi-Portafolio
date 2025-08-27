@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Curso, CursosService } from '../../services/cursos.service';
+import { Curso, CursosService } from '../../../services/cursos.service';
 
 @Component({
   selector: 'app-cursos',

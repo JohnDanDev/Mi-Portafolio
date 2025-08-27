@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\ExperienciasController;
+use App\Http\Controllers\CursosController;
 
 /*
 |--------------------------------------------------------------------------
