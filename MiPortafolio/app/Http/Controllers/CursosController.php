@@ -16,7 +16,7 @@ class CursosController extends Controller
     }
 
     public function show($id){
-        $experiencias = Cursos::find($id);
+        $cursos = Cursos::find($id);
         return response()->json($cursos);
     }
 
@@ -28,9 +28,10 @@ class CursosController extends Controller
             'lugar' => 'required|string',
             'detalle' => 'required|string',
             'url_img' => 'required|string|nullable',
+            'fecha_expedicion' => 'nullable'
         ]);
 
-        $experiencias->update($validated);
+        $cursos->update($validated);
 
         return response()->json(['message' => 'Curso actualizado', 'cursos' =>$cursos]);
     }
