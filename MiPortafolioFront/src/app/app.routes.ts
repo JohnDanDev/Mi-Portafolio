@@ -5,6 +5,7 @@ import { ProyectoVistaComponent } from './components/proyectos/proyecto-vista/pr
 import { ExperienciaVistaComponent } from './components/experiencias/experiencia-vista/experiencia-vista.component';
 import { ExperienciaComponent } from './components/experiencias/experiencia/experiencia.component';
 import { CursosComponent } from './components/cursos/curso/curso.component';
+import { CursoVistaComponent } from './components/cursos/curso-vista/curso-vista.component';
 
 export const routes: Routes = [
     { path: 'principal', component: PrincipalComponent},
@@ -12,5 +13,6 @@ export const routes: Routes = [
     { path: 'experiencias', component: ExperienciaComponent},
     { path: 'proyectoVista', component: ProyectoVistaComponent},
     { path: 'experienciaVista', component: ExperienciaVistaComponent},
-    { path: 'cursos', component: CursosComponent}
+    { path: 'cursos', component: CursosComponent},
+    { path: 'cursoVista', component: CursoVistaComponent}
 ];

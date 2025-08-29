@@ -1,1 +1,16 @@
-<p>curso-vista works!</p>
+<p>curso-vista works!</p><div>
+    <h2>Listado de Cursos</h2>
+    <table>
+        <tbody>
+            <tr *ngFor="let curso of cursos">
+                <td> {{curso.id_curso}} </td>
+                <td> {{curso.nombre}} </td>
+                <td> {{curso.lugar}} </td>
+                <td> {{curso.detalle}} </td>
+                <td> {{curso.url_img}} </td>
+                <td> {{curso.fecha_expedicion}} </td>
+                <br>
+            </tr>
+        </tbody>
+    </table>
+</div>

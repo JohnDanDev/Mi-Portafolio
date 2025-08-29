@@ -6,8 +6,8 @@ import { Curso, CursosService } from '../../../services/cursos.service';
 @Component({
   selector: 'app-cursos',
   imports: [CommonModule, FormsModule],
-  templateUrl: './cursos.component.html',
-  styleUrl: './cursos.component.css'
+  templateUrl: './curso.component.html',
+  styleUrl: './curso.component.css'
 })
 export class CursosComponent implements OnInit{
   constructor(private cursoService: CursosService){}
