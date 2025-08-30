@@ -16,3 +16,13 @@ export const routes: Routes = [
     { path: 'cursos', component: CursosComponent},
     { path: 'cursoVista', component: CursoVistaComponent}
 ];
+
+export const routesAdmin: Routes = [
+    { path: 'principal', component: PrincipalComponent},
+    { path: 'proyectos', component: ProyectoComponent},
+    { path: 'experiencias', component: ExperienciaComponent},
+    { path: 'proyectoVista', component: ProyectoVistaComponent},
+    { path: 'experienciaVista', component: ExperienciaVistaComponent},
+    { path: 'cursos', component: CursosComponent},
+    { path: 'cursoVista', component: CursoVistaComponent}
+];

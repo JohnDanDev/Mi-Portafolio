@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AwtService {
+export class AuthService {
 
   getUserRole(): string{
     return localStorage.getItem('role') || 'user';
