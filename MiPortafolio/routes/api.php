@@ -41,9 +41,6 @@ Route::get('/cursos',[CursosController::class, 'index']);
 Route::get('/cursos/{id}',[CursosController::class, 'show']);
 Route::put('/cursos/{id}',[CursosController::class, 'update']);
 
-//Rutas para el Login
-Route::post('/login', [AdministradoresController::class, 'login']);
-Route::post('/refresh', [AdministradoresController::class, 'refresh']);
 
 Route::middleware('auth:api')->group(function() {
     Route::delete('/cursos/{id}',[CursosController::class, 'destroy']);
@@ -52,4 +49,6 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/cursos/{id}',[CursosController::class, 'show']);
     Route::put('/cursos/{id}',[CursosController::class, 'update']);
 
+    Route::get('/me', [AuthController::class, 'me']);
+    Route::post('/post', [AuthController::class, 'logout']);
 });

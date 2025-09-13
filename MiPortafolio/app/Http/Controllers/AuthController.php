@@ -7,19 +7,39 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     public function login(Request $request){
-        $credential = $request->only('usuario','password');
-        if(!$token = Auth::guard('api')->attemp($credential)){
-            return response()->json(['error' => 'Unauthorized'], 401);
+        $data = $request->validate([
+            'usuario' => ['required', 'string'],
+            'password' => ['required', 'string']
+        ]);
+
+        if(!$token = Auth::guard('api')->attempt($data)){
+            throw ValidationException::withMessages([
+                'usuario' => ['Crdenciales invalidas']
+            ]);
         }
 
         return response()->json([
             'token' => $token,
-            'user' => Auth::guard('api')->usuario()
+            'token_type' => 'bearer',
+            'expires_in' => Auth::guard('api')->factory()->getTTL()*60,
+            'user' => Auth::guard('api')->user()
         ]);
+    }
+
+    public function me(){
+        return response()->json(Auth::guard('api')->user());
     }
 
     public function logout(){
         Auth::guard('api')->logout();
-        return response()->json(['message' => 'Logged out Successfully']);
+        return response()->json(['message' => 'Sesion cerrada']);
+    }
+
+    public function refresh(){
+        return response()->json([
+            'token' => Auth::guard('api')->refresh(),
+            'token_type' => 'bearer',
+            'expires_in' => Auth::guard('api')->factory()->getTTL() * 60
+        ]);
     }
 }

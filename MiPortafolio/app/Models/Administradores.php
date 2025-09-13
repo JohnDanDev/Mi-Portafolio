@@ -16,7 +16,7 @@ class Administradores extends Authenticable implements JWTSubject
     protected $hidden = ['password', 'token', 'rememberToken'];
 
     public function getAuthIdentifierName(){
-        return 'nombre';
+        return 'usuario';
     }
 
     public function getJWTIdentifier(){
