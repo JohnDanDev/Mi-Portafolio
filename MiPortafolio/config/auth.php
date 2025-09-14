@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'api' => [
+        'admin' => [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
@@ -62,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Administradores::class,
         ],
 
         // 'users' => [

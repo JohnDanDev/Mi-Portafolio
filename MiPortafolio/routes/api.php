@@ -35,20 +35,21 @@ Route::get('/experiencias',[ExperienciasController::class, 'index']);
 Route::get('/experiencias/{id}',[ExperienciasController::class, 'show']);
 Route::put('/experiencias/{id}',[ExperienciasController::class, 'update']);
 
-Route::delete('/cursos/{id}',[CursosController::class, 'destroy']);
+/*Route::delete('/cursos/{id}',[CursosController::class, 'destroy']);
 Route::post('/cursos',[CursosController::class, 'store']);
 Route::get('/cursos',[CursosController::class, 'index']);
 Route::get('/cursos/{id}',[CursosController::class, 'show']);
-Route::put('/cursos/{id}',[CursosController::class, 'update']);
+Route::put('/cursos/{id}',[CursosController::class, 'update']);*/
 
+Route::get('login', [AuthController::class, 'login']);
 
-Route::middleware('auth:api')->group(function() {
+Route::middleware('auth:admin')->group(function() {
     Route::delete('/cursos/{id}',[CursosController::class, 'destroy']);
     Route::post('/cursos',[CursosController::class, 'store']);
     Route::get('/cursos',[CursosController::class, 'index']);
     Route::get('/cursos/{id}',[CursosController::class, 'show']);
     Route::put('/cursos/{id}',[CursosController::class, 'update']);
 
-    Route::get('/me', [AuthController::class, 'me']);
-    Route::post('/post', [AuthController::class, 'logout']);
+    Route::get('me', [AuthController::class, 'me']);
+    Route::post('logout', [AuthController::class, 'logout']);
 });

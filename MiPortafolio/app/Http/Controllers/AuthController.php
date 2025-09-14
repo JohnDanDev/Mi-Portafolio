@@ -7,39 +7,24 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     public function login(Request $request){
-        $data = $request->validate([
-            'usuario' => ['required', 'string'],
-            'password' => ['required', 'string']
-        ]);
+        $credentials = $request->only('email', 'password');
 
-        if(!$token = Auth::guard('api')->attempt($data)){
-            throw ValidationException::withMessages([
-                'usuario' => ['Crdenciales invalidas']
-            ]);
+        if(!$token = auth('admin')->attempt($credemtials)){
+            return response()->json(['error'=>'Credenciales invalidas'], 401);
         }
 
         return response()->json([
             'token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => Auth::guard('api')->factory()->getTTL()*60,
-            'user' => Auth::guard('api')->user()
+            'admin' => auth('admin')->user()
         ]);
-    }
-
-    public function me(){
-        return response()->json(Auth::guard('api')->user());
     }
 
     public function logout(){
-        Auth::guard('api')->logout();
+        auth('admin')->logout();
         return response()->json(['message' => 'Sesion cerrada']);
     }
 
-    public function refresh(){
-        return response()->json([
-            'token' => Auth::guard('api')->refresh(),
-            'token_type' => 'bearer',
-            'expires_in' => Auth::guard('api')->factory()->getTTL() * 60
-        ]);
+    public function me(){
+        return response()->json(auth('admin')->user());
     }
 }

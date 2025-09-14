@@ -8,35 +8,19 @@ import { tap } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8000/api/login';
-  private loggedIn = new BehaviorSubject<boolean>(false);
-
-  constructor(private http: HttpClient){
-    this.loggedIn.next(!!localStorage.getItem('token'));
-  }
+  private apiUrl = 'http://localhost:8000/api';
+  constructor(private http: HttpClient){}
 
   //Metodo para hacer login
-  login(credential:{usuario: string, password: string}): Observable<any>{
-    return this.http.post<{token: string}>(this.apiUrl, credential).pipe(
-      tap(response =>{
-        localStorage.setItem('token', response.token);
-        this.loggedIn.next(true);
-      })
-    );
+  login(credentials:{email: string, password: string}): Observable<any>{
+    return this.http.post(`${this.apiUrl}/login`, credentials);
   }
   
-  logout(): void{
-    localStorage.removeItem('token');
-    this.loggedIn.next(false);
+  logout(): Observable<any>{
+    return this.http.post(`${this.apiUrl}/logout`,{});
   }
 
-  //Saber si esta logueado
-  isLoggedIn(): Observable<boolean>{
-    return this.loggedIn.asObservable();
-  }
-
-  //Obtener token
-  getToken(): string | null {
-    return localStorage.getItem('token');
+  me(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/me`);
   }
 }
