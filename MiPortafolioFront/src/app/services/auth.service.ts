@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,10 @@ export class AuthService {
 
   me(): Observable<any>{
     return this.http.get(`${this.apiUrl}/me`);
+  }
+
+  isLoggedIn(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    return of(!!token); // true si existe, false si no
   }
 }

@@ -1,24 +1,42 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
-  usuario: string = '';
-  password: string = '';
+  errorMessage = '';
 
-  constructor(private auth: AuthService, private router: Router){}
+  loginForm!: FormGroup;
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router){
+    this.loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+  }
+
+  
 
   onSubmit(){
-    this.auth.login({usuario: this.usuario, password: this.password}).subscribe({
-      next:() => this.router.navigate(['/principal']),
-      error: () => alert('Credenciales invalidas')
-    });
+    if(this.loginForm.valid){
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (res) => {
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/principal']);
+        },
+        error:() => {
+          this.errorMessage = 'Credenciales Invalidas';
+        }
+      });
+    }
   }
+
 }
