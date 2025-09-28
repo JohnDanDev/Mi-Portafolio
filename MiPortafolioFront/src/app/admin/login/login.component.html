@@ -1,26 +1,7 @@
 <div>
     <h2>Iniciar sesion</h2>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div>
-            <label>Email</label>
-            <input type="email" formControlName="email"/>
-            <div class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-                <small *ngIf="loginForm.get('email')?.errors?.['required']">El Email es obligatorio</small>
-                <small *ngIf="loginForm.get('email')?.errors?.['email']">Formato invalido</small>
-            </div>
-        </div>
-
-        <div>
-            <label>Contraseña</label>
-            <input type="password" formControlName="password" />
-            <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-                <small *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es obligatoria</small>
-                <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Minimo 6 caracteres</small>
-            </div>
-        </div>
-
-        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-        <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+    <form>
+       
     </form>
 </div>
