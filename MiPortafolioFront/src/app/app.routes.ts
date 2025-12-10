@@ -16,15 +16,10 @@ export const routes: Routes = [
     { path: 'experienciaVista', component: ExperienciaVistaComponent},
     { path: 'cursos', component: CursosComponent},
     { path: 'cursoVista', component: CursoVistaComponent},
-    { path: '**', redirectTo:'login'}
+    { path: '**', redirectTo:'login'},
+
+    { path: 'login', loadComponent: () => import('./components/login/login.component').then(c => c.LoginComponent) },
+    { path: 'dashboard', canActivate: [AuthGuard], loadComponent: () => import('./components/cursos/curso/curso.component').then(c => c.CursosComponent) },
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 
-export const routesAdmin: Routes = [
-    { path: 'principal', component: PrincipalComponent},
-    { path: 'proyectos', component: ProyectoComponent},
-    { path: 'experiencias', component: ExperienciaComponent},
-    { path: 'proyectoVista', component: ProyectoVistaComponent},
-    { path: 'experienciaVista', component: ExperienciaVistaComponent},
-    { path: 'cursos', component: CursosComponent},
-    { path: 'cursoVista', component: CursoVistaComponent}
-];

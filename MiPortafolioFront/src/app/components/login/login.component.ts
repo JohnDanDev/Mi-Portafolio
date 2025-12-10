@@ -1,22 +1,31 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [CommonModule,
+    FormsModule]
 })
 export class LoginComponent {
-  administradores:any = {};
-  constructor(private auth:AuthService, private router:Router){}
+  email = '';
+  password = '';
+  error = '';
 
-  login(){
-    this.auth.login(this.administradores).subscribe(res:any)=>{
-      this.auth.saveToken(res.token);
-      this.router.navigate(['/cursos']);
-    }
+  constructor(private auth: AuthService, private router: Router) {}
+
+  onSubmit() {
+    this.error = '';
+    this.auth.login(this.email, this.password).subscribe({
+      next: _ => this.router.navigate(['/cursos']),
+      error: err => {
+        // Laravel devuelve errores en formato { errors: { email: [...] } } o message
+        this.error = err?.error?.errors ? Object.values(err.error.errors).flat().join(' ') : err?.error?.message || 'Error de login';
+      }
+    });
   }
 }
+

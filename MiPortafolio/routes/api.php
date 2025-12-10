@@ -44,10 +44,13 @@ Route::put('/cursos/{id}',[CursosController::class, 'update']);*/
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::middleware('auth:api')->group(function() {
+Route::middleware('auth:sanctum')->group(function() {
     Route::delete('/cursos/{id}',[CursosController::class, 'destroy']);
     Route::post('/cursos',[CursosController::class, 'store']);
     Route::get('/cursos',[CursosController::class, 'index']);
     Route::get('/cursos/{id}',[CursosController::class, 'show']);
-    Route::put('/cursos/{id}',[CursosController::class, 'update']);    
+    Route::put('/cursos/{id}',[CursosController::class, 'update']);
+    
+    Route::post('logout', [AuthController::class,'logout']);
+    Route::get('me', [AuthController::class,'me']);
 });
